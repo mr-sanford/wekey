@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Лезвия автоключей
+{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <h1 class="mb-4">Лезвия автоключей</h1>
+    <select class="form-select form-select-lg mb-3" id="select_brand">
+        <option selected>Все модели</option>
+        <option value="AUDI">AUDI</option>
+        <option value="BMW">BMW</option>
+        <option value="FIAT">FIAT</option>
+        <option value="FORD">FORD</option>
+        <option value="GEELY">GEELY</option>
+        <option value="GREAT WALL">GREAT WALL</option>
+        <option value="HAVAL">HAVAL</option>
+        <option value="HONDA">HONDA</option>
+        <option value="HYUNDAI">HYUNDAI</option>
+        <option value="ISUZU">ISUZU</option>
+        <option value="IVECO">IVECO</option>
+        <option value="JAC">JAC</option>
+        <option value="JEEP">JEEP</option>
+        <option value="KIA">KIA</option>
+        <option value="LEXUS">LEXUS</option>
+        <option value="MAZDA">MAZDA</option>
+        <option value="MERCEDES">MERCEDES</option>
+        <option value="MITSUBISHI">MITSUBISHI</option>
+        <option value="MQB">MQB</option>
+        <option value="NISSAN">NISSAN</option>
+        <option value="PSA">PSA</option>
+        <option value="RENAULT">RENAULT</option>
+        <option value="SSANGYONG">SSANGYONG</option>
+        <option value="SUBARU">SUBARU</option>
+        <option value="SUZUKI">SUZUKI</option>
+        <option value="TOYOTA">TOYOTA</option>
+        <option value="VOLVO">VOLVO</option>
+        <option value="VW">VW</option>
+    </select>
+    <div class="row g-2 row-cols-1 row-cols-md-2 row-cols-lg-3" id="cont_blades">
+        {% for el in blades_models %}
+            <div class="col col_my" id="scroll_{{ el.cat }}">
+                <div class="card card_my h-100">
+                    <div class="card_div_img blades gallery">
+                        <a href="/static/article/carkey/blades/{{ el.cat }}_full.jpg" data-caption="{{ el.cat }}">
+                            <img src="/static/article/carkey/blades/{{ el.cat }}.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="card-body text-center">
+{#                        <h3 class="card-title">#{{ el.cat }}</h3>#}
+                        <p>Обозначение: {{ el.subcat }}</p>
+                        <p>Бренд: <strong>{{ el.header }}</strong></p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+    <script>
+        $(document).ready(function () {
+            $("#select_brand").change(function () {
+                let brand = $(this).val();
+                if (brand != '') {
+                    $.ajax({
+                        url: "{{url_for('getBladesAjax')}}",
+                        type: "POST",
+                        data: {"data":brand},
+                        success: function (res) {
+                            $("#cont_blades").empty();
+                            {#$("#cont_blades").append(data);#}
+                            $("#cont_blades").html(res);
+                        }
+                    });
+                } else {
+                    $("#cont_blades").html("😑");
+                }
+            });
+        });
+    </script>
+{% endblock %}

@@ -17,7 +17,7 @@ class Record(db.Model):
     subcat = db.Column(db.String(100), nullable=True)
     header = db.Column(db.String(200), nullable=True)
     card = db.Column(db.Text, nullable=True)
-    article = db.Column(db.Text, nullable=False)
+    article = db.Column(db.Text, nullable=True)
 
     def __repr__(self):
         return '<Record %r>' % self.id
@@ -74,6 +74,24 @@ def notes():  # put application's code here
 def notes_noteview(cat, subcat):  # put application's code here
     notes_articleview = db.session.query(Record).filter_by(cat=cat, subcat=subcat, part='notes')
     return render_template('notes_article.html', notes_articleview=notes_articleview)
+
+@app.route('/blades')
+def blades():  # put application's code here
+    blades_models = db.session.query(Record).filter_by(part="blades").order_by(Record.type_sort)
+    return render_template('blades.html', blades_models=blades_models)
+
+@app.route("/getBladesAjax",methods=['GET','POST'])
+def getBladesAjax():
+    blades_brands = []
+    if request.method == 'POST':
+        data = request.form['data']
+        blades_models = db.session.query(Record).filter_by(part="blades").order_by(Record.type_sort)
+        for el in blades_models:
+            if data in el.header:
+                blades_brands.append({"cat": el.cat, "subcat": el.subcat, "header": el.header})
+            if data == 'Все модели':
+                blades_brands = blades_models
+    return render_template("get_blades_ajax.html", data=blades_brands)
 
 @app.route('/carkey')
 def carkey():

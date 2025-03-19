@@ -12,15 +12,15 @@
        ym(100279518, "init", {
             clickmap:true,
             trackLinks:true,
-            accurateTrackBounce:true
+            accurateTrackBounce:true,
+            webvisor:true
        });
     </script>
-<noscript><div><img src="https://mc.yandex.ru/watch/100279518" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
-    <noscript><div><img src="https://mc.yandex.ru/watch/100278390" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <noscript><div><img src="https://mc.yandex.ru/watch/100279518" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <!-- /Yandex.Metrika counter -->
 
     <script src="{{ url_for('static', filename='js/color-modes.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -86,8 +86,14 @@
                         <div class="vr d-none d-lg-flex h-100 mx-lg-1 text-white"></div>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/carkey">Автоключи</a>
+                    <li class="nav-item dropdown" data-bs-theme="light">
+                        <a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown"
+                            aria-expanded="false" href="">Автоключи </a>
+                        <ul class="dropdown-menu dropdown-menu_nav">
+                            <li><a class="dropdown-item" href="/blades">Каталог лезвий</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="/carkey">Программирование</a></li>
+                        </ul>
                     </li>
 
                     <li class="nav-item py-1 py-lg-1 col-12 col-lg-auto">
@@ -200,7 +206,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/baguettebox.js@1.12.0/dist/baguetteBox.min.js"></script>
 
-<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+{#<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>#}
 <script>
     // Add slideDown animation to Bootstrap dropdown when expanding.
     $('.dropdown').on('show.bs.dropdown', function() {
@@ -226,5 +232,8 @@
     });
 </script>
 <script src="{{ url_for('static', filename='js/upscroll.js') }}"></script>
+
+{% block script %}{% endblock %}
+
 </body>
 </html>
