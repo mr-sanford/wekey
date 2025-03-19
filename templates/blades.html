@@ -71,7 +71,7 @@
                         data: {"data":brand},
                         success: function (res) {
                             $("#cont_blades").empty();
-                            $("#cont_blades").html(res);
+                            $("#cont_blades").append(res).hide().fadeIn(1000);
                         }
                     });
                 } else {
