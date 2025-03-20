@@ -72,6 +72,7 @@
                         success: function (res) {
                             $("#cont_blades").empty();
                             $("#cont_blades").append(res).hide().fadeIn(1000);
+                            baguetteBox.run('.gallery', {}); {#Инициализация скрипта галереи для добавленных изображений#}
                         }
                     });
                 } else {
