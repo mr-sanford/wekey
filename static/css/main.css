@@ -23,6 +23,12 @@ footer {
     .button_head a {
         margin-top: 0.25rem;
     }
+    .notes .gallery img {
+        max-width: 550px;
+    }
+    .notes .small_img img {
+        max-width: 400px;
+    }
 }
 
 /*---Переопределям размеры шрифтов*/
