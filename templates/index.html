@@ -10,18 +10,19 @@ WeKey
 
     <div class="row g-2 row-cols-1 row-cols-md-2 row-cols-lg-3" >
 
-        <div class="col col_my" id="">
-            <div class="card card_my h-100">
-                <div class="card_div_img index"><img src="/static/article/carkey/blades/01__.jpg" alt=""></div>
-                <div class="card-body">
-                    <h3 class="card-title">Каталог лезвий автоключей</h3>
-                    <p>Доступен в главном меню в разделе "Автоключи"</p>
-                    <div class="div_card_btn"><a href="/blades" class="btn btn-primary btn-lg card_my_btn">Смотреть</a></div>
-                </div>
-            </div>
-        </div>
-
         {% for el in new_article %}
+            {% if el.id == 139 %}
+                <div class="col col_my" id="">
+                    <div class="card card_my h-100">
+                        <div class="card_div_img index"><img src="/static/article/carkey/blades/01__.jpg" alt=""></div>
+                        <div class="card-body">
+                            <h3 class="card-title">Каталог лезвий автоключей</h3>
+                            <p>Доступен в главном меню в разделе "Автоключи"</p>
+                            <div class="div_card_btn"><a href="/blades" class="btn btn-primary btn-lg card_my_btn">Смотреть</a></div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
             <div class="col col_my" id="scroll_{{ el.cat }}">
                 <div class="card card_my h-100">
                     <div class="card_div_img index"><img src="/static/article/{{ el.part }}/{{ el.cat }}/{{ el.subcat }}/{{ el.cat }}_{{ el.subcat }}.jpg" alt=""></div>
