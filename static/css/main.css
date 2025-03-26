@@ -16,6 +16,83 @@ footer {
 @media (max-width: 991px) {
     .navbar-brand {
         margin-right: 0 !important;
+        background: none;
+        border: 0;
+        box-sizing: border-box;
+        box-shadow: inset 0 0 0 1px #383B3F;
+        /*color: #f45e61;*/
+        font-size: inherit;
+        /*font-weight: 700;*/
+        /*margin: 1em;*/
+        padding: 0.2em 0.5em;
+        text-align: center;
+        text-transform: capitalize;
+        vertical-align: middle;
+    }
+
+    .draw {
+        overflow: hidden;
+        position: relative;
+    }
+
+    .draw::before, .draw::after {
+        content: '';
+        box-sizing: border-box;
+        position: absolute;
+        border: 1px solid transparent;
+        width: 0;
+        height: 0;
+    }
+
+    .draw::before {
+        top: 0;
+        left: 0;
+        border-top-color: #666D77;
+        border-right-color: #666D77;
+        animation: border 2s infinite;
+    }
+
+    .draw::after {
+        bottom: 0;
+        right: 0;
+        animation: border 2s 1s infinite, borderColor 2s 1s infinite;
+    }
+
+    @keyframes border {
+        0% {
+            width: 0;
+            height: 0;
+        }
+        25% {
+            width: 100%;
+            height: 0;
+        }
+        50% {
+            width: 100%;
+            height: 100%;
+        }
+        100% {
+            width: 100%;
+            height: 100%;
+        }
+    }
+    @keyframes borderColor {
+        0% {
+            border-bottom-color: #666D77;
+            border-left-color: #666D77;
+        }
+        50% {
+            border-bottom-color: #666D77;
+            border-left-color: #666D77;
+        }
+        51% {
+            border-bottom-color: transparent;
+            border-left-color: transparent;
+        }
+        100% {
+            border-bottom-color: transparent;
+            border-left-color: transparent;
+        }
     }
 }
 
