@@ -73,24 +73,24 @@ footer {
     /*        height: 100%;*/
     /*    }*/
     /*}*/
-    @keyframes borderColor {
-        0% {
-            border-bottom-color: #666D77;
-            border-left-color: #666D77;
-        }
-        50% {
-            border-bottom-color: #666D77;
-            border-left-color: #666D77;
-        }
-        51% {
-            border-bottom-color: transparent;
-            border-left-color: transparent;
-        }
-        100% {
-            border-bottom-color: transparent;
-            border-left-color: transparent;
-        }
-    }
+    /*@keyframes borderColor {*/
+    /*    0% {*/
+    /*        border-bottom-color: #666D77;*/
+    /*        border-left-color: #666D77;*/
+    /*    }*/
+    /*    50% {*/
+    /*        border-bottom-color: #666D77;*/
+    /*        border-left-color: #666D77;*/
+    /*    }*/
+    /*    51% {*/
+    /*        border-bottom-color: transparent;*/
+    /*        border-left-color: transparent;*/
+    /*    }*/
+    /*    100% {*/
+    /*        border-bottom-color: transparent;*/
+    /*        border-left-color: transparent;*/
+    /*    }*/
+    /*}*/
 }
 
 @media (min-width: 768px) {
