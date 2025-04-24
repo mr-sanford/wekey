@@ -88,7 +88,7 @@ def getBladesAjax():
         blades_models = db.session.query(Record).filter_by(part="blades").order_by(Record.type_sort)
         for el in blades_models:
             if data in el.header:
-                blades_brands.append({"cat": el.cat, "subcat": el.subcat, "header": el.header})
+                blades_brands.append({"cat": el.cat, "subcat": el.subcat, "header": el.header}) #список словарей
             if data == 'Все модели':
                 blades_brands = blades_models
     return render_template("get_blades_ajax.html", data=blades_brands)
