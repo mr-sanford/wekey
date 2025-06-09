@@ -12,7 +12,7 @@ WeKey
 
         {% for el in new_article %}
             {% if el.id == 139 %}
-                <div class="col col_my" id="">
+                <div class="col col_my">
                     <div class="card card_my h-100">
                         <div class="card_div_img index"><img src="/static/article/carkey/blades/01__.jpg" alt=""></div>
                         <div class="card-body">
@@ -23,16 +23,33 @@ WeKey
                     </div>
                 </div>
             {% endif %}
-            <div class="col col_my" id="scroll_{{ el.cat }}">
+            <div class="col col_my">
                 <div class="card card_my h-100">
-                    <div class="card_div_img index"><img src="/static/article/{{ el.part }}/{{ el.cat }}/{{ el.subcat }}/{{ el.cat }}_{{ el.subcat }}.jpg" alt=""></div>
+                    <div class="card_div_img index">
+                        {% if el.part == 'carkey' %}
+                            <img src="/static/article/{{ el.part }}/{{ el.cat }}/{{ el.subcat }}/{{ el.header }}/{{ el.cat }}_{{ el.subcat }}_{{ el.header }}.jpg" alt="">
+                        {% else %}
+                            <img src="/static/article/{{ el.part }}/{{ el.cat }}/{{ el.subcat }}/{{ el.cat }}_{{ el.subcat }}.jpg" alt="">
+                        {% endif %}
+                    </div>
                     <div class="card-body">
                         {% if el.part == 'sig' %}
                             <h3 class="card-title">Инструкция {{ el.cat }} {{ el.subcat }}</h3>
-                        {% else %}
-                            <h3 class="card-title">{{ el.header }}</h3>
                         {% endif %}
-                        <div class="div_card_btn"><a href="/{{ el.part }}/{{ el.cat }}/{{ el.subcat }}" class="btn btn-primary btn-lg card_my_btn">Смотреть</a></div>
+
+                        {% if el.part == 'carkey' %}
+                            <h3 class="card-title">Программирование ключа  {{ el.cat }} {{ el.subcat }} ({{ el.header }} г.)</h3>
+                        {% endif %}
+
+                        {% if el.part == 'notes' %}
+                            <h3 class="card-title">{{  el.header }}</h3>
+                        {% endif %}
+
+                        {% if el.part == 'carkey' %}
+                            <div class="div_card_btn"><a href="/{{ el.part }}/{{ el.cat }}/{{ el.subcat }}/{{ el.header }}" class="btn btn-primary btn-lg card_my_btn">Смотреть</a></div>
+                        {% else %}
+                            <div class="div_card_btn"><a href="/{{ el.part }}/{{ el.cat }}/{{ el.subcat }}" class="btn btn-primary btn-lg card_my_btn">Смотреть</a></div>
+                        {% endif %}
                     </div>
                 </div>
             </div>

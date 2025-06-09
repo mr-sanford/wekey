@@ -29,7 +29,7 @@ def base_data():
     return dict(sig_name = sig_name, today_year = today_year)
 @app.route('/')
 def index():
-    new_article = db.session.query(Record).filter(or_(Record.part=='sig', Record.part=='notes')).order_by(desc(Record.id)).limit(6).distinct()
+    new_article = db.session.query(Record).filter(or_(Record.part=='sig', Record.part=='notes', Record.part=='carkey')).order_by(desc(Record.id)).limit(6).distinct()
     return render_template('index.html', new_article=new_article)
 @app.route('/sig')
 def sig():
@@ -94,8 +94,28 @@ def getBladesAjax():
     return render_template("get_blades_ajax.html", data=blades_brands)
 
 @app.route('/carkey')
-def carkey():
-    return render_template('carkey.html')
+def carkey():  # put application's code here
+    carkey_models = db.session.query(Record).filter_by(part="carkey").order_by(Record.type_sort)
+    carkey_models_uniq = db.session.query(Record.cat).filter_by(part="carkey").order_by(Record.cat).distinct()
+    return render_template('carkey.html', carkey_models=carkey_models, carkey_models_uniq=carkey_models_uniq)
+
+@app.route('/carkey/<string:brand>/<string:model>/<string:year>')
+def carkey_model(brand, model, year):  # put application's code here
+    carkey_article = db.session.query(Record).filter_by(cat=brand, subcat=model, header=year, part='carkey')
+    return render_template('carkey_article.html', carkey_article=carkey_article)
+
+@app.route("/getCarkeyAjax",methods=['GET','POST'])
+def getCarkeyAjax():
+    carkey_brands = []
+    if request.method == 'POST':
+        data = request.form['data']
+        carkey_models = db.session.query(Record).filter_by(part="carkey").order_by(Record.type_sort)
+        for el in carkey_models:
+            if data in el.cat:
+                carkey_brands.append({"cat": el.cat, "subcat": el.subcat, "header": el.header}) #список словарей
+            if data == 'Все модели':
+                carkey_brands = carkey_models
+    return render_template("get_carkey_ajax.html", data=carkey_brands)
 @app.route('/gateway')
 def gateway():
     return render_template('gateway.html')

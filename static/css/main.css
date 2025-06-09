@@ -223,6 +223,12 @@ body {
     max-height: 220px;
 }
 
+.card_div_img.carkey img {
+    border-radius: 5px;
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+}
 .card_div_img.blades img {
     border-radius: 5px;
     object-fit: contain;
