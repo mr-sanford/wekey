@@ -95,7 +95,7 @@ def getBladesAjax():
 
 @app.route('/carkey')
 def carkey():  # put application's code here
-    carkey_models = db.session.query(Record).filter_by(part="carkey").order_by(Record.type_sort)
+    carkey_models = db.session.query(Record).filter_by(part="carkey").order_by(desc(Record.id))
     carkey_models_uniq = db.session.query(Record.cat).filter_by(part="carkey").order_by(Record.cat).distinct()
     return render_template('carkey.html', carkey_models=carkey_models, carkey_models_uniq=carkey_models_uniq)
 
