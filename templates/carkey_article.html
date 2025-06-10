@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 
 {% block title %}
-Программирование ключа {{carkey_article[0].cat}} {{carkey_article[0].subcat}} ({{carkey_article[0].header}} г.)
+Программирование ключа {{carkey_article[0].cat}} {{carkey_article[0].subcat}} ({{carkey_article[0].header}})
 {% endblock %}
 
 {% block body %}
 <div class="container notes mt-4">
-    <h1>Программирование ключа {{carkey_article[0].cat}} {{carkey_article[0].subcat}} ({{carkey_article[0].header}} г.)</h1>
+    <h1>Программирование ключа {{carkey_article[0].cat}} {{carkey_article[0].subcat}} ({{carkey_article[0].header}})</h1>
     {{carkey_article[0].article | safe}}
 </div>
 {% endblock %}
