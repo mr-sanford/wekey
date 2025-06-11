@@ -29,7 +29,7 @@ def base_data():
     return dict(sig_name = sig_name, today_year = today_year)
 @app.route('/')
 def index():
-    new_article = db.session.query(Record).filter(or_(Record.part=='sig', Record.part=='notes', Record.part=='carkey')).order_by(desc(Record.id)).limit(6).distinct()
+    new_article = db.session.query(Record).filter(or_(Record.part=='sig', Record.part=='notes', Record.part=='carkey')).order_by(desc(Record.id)).limit(8).distinct()
     return render_template('index.html', new_article=new_article)
 @app.route('/sig')
 def sig():
