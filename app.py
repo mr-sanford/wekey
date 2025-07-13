@@ -109,7 +109,7 @@ def getCarkeyAjax():
     carkey_brands = []
     if request.method == 'POST':
         data = request.form['data']
-        carkey_models = db.session.query(Record).filter_by(part="carkey").order_by(Record.type_sort)
+        carkey_models = db.session.query(Record).filter_by(part="carkey").order_by(desc(Record.id))
         for el in carkey_models:
             if data in el.cat:
                 carkey_brands.append({"cat": el.cat, "subcat": el.subcat, "header": el.header}) #список словарей
