@@ -11,25 +11,19 @@ WeKey
     <div class="row g-2 row-cols-1 row-cols-md-2 row-cols-lg-3" >
 
         {% for el in new_article %}
-            {% if el.id == 139 %}
-                <div class="col col_my">
-                    <div class="card card_my h-100">
-                        <div class="card_div_img index"><img src="/static/article/carkey/blades/01__.jpg" alt=""></div>
-                        <div class="card-body">
-                            <h3 class="card-title">Каталог лезвий автоключей</h3>
-                            <p>Доступен в главном меню в разделе "Автоключи"</p>
-                            <div class="div_card_btn"><a href="/blades" class="btn btn-primary btn-lg card_my_btn">Смотреть</a></div>
-                        </div>
-                    </div>
-                </div>
-            {% endif %}
             <div class="col col_my">
                 <div class="card card_my h-100">
                     <div class="card_div_img index">
                         {% if el.part == 'carkey' %}
                             <img src="/static/article/{{ el.part }}/{{ el.cat }}/{{ el.subcat }}/{{ el.header }}/{{ el.cat }}_{{ el.subcat }}_{{ el.header }}.jpg" alt="">
-                        {% else %}
-                            <img src="/static/article/{{ el.part }}/{{ el.cat }}/{{ el.subcat }}/{{ el.cat }}_{{ el.subcat }}.jpg" alt="">
+                        {% endif %}
+
+                        {% if el.part == 'sig' or el.part == 'notes' %}
+                           <img src="/static/article/{{ el.part }}/{{ el.cat }}/{{ el.subcat }}/{{ el.cat }}_{{ el.subcat }}.jpg" alt="">
+                        {% endif %}
+
+                        {% if el.part == 'other' %}
+                           <img src="/static/article/{{ el.part }}/{{ el.cat }}/{{ el.cat }}.jpg" alt="">
                         {% endif %}
                     </div>
                     <div class="card-body">
@@ -41,13 +35,19 @@ WeKey
                             <h3 class="card-title">Программирование ключа  {{ el.cat }} {{ el.subcat }} ({{ el.header }})</h3>
                         {% endif %}
 
-                        {% if el.part == 'notes' %}
+                        {% if el.part == 'notes' or el.part == 'other' %}
                             <h3 class="card-title">{{  el.header }}</h3>
                         {% endif %}
 
-                        {% if el.part == 'carkey' %}
+                        {% if el.part == 'other' %}
+                            <div class="div_card_btn"><a href="/{{ el.part }}/{{ el.cat }}" class="btn btn-primary btn-lg card_my_btn">Смотреть</a></div>
+                        {% endif %}
+
+                        {% if el.part == 'sig' or el.part == 'notes' %}
                             <div class="div_card_btn"><a href="/{{ el.part }}/{{ el.cat }}/{{ el.subcat }}/{{ el.header }}" class="btn btn-primary btn-lg card_my_btn">Смотреть</a></div>
-                        {% else %}
+                        {% endif %}
+
+                        {% if el.part == 'carkey' %}
                             <div class="div_card_btn"><a href="/{{ el.part }}/{{ el.cat }}/{{ el.subcat }}" class="btn btn-primary btn-lg card_my_btn">Смотреть</a></div>
                         {% endif %}
                     </div>

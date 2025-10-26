@@ -25,11 +25,12 @@ class Record(db.Model):
 @app.context_processor
 def base_data():
     sig_name = db.session.query(Record.cat).filter_by(part='sig').order_by(Record.cat).distinct()
+    other_page = db.session.query(Record).filter_by(part='other').order_by(Record.type_sort)
     today_year = datetime.now().year
-    return dict(sig_name = sig_name, today_year = today_year)
+    return dict(sig_name = sig_name, today_year = today_year, other_page = other_page)
 @app.route('/')
 def index():
-    new_article = db.session.query(Record).filter(or_(Record.part=='sig', Record.part=='notes', Record.part=='carkey')).order_by(desc(Record.id)).limit(8).distinct()
+    new_article = db.session.query(Record).filter(or_(Record.part=='sig', Record.part=='notes', Record.part=='carkey', Record.part=='other')).order_by(desc(Record.id)).limit(9).distinct()
     return render_template('index.html', new_article=new_article)
 @app.route('/sig')
 def sig():
@@ -74,6 +75,16 @@ def notes():  # put application's code here
 def notes_noteview(cat, subcat):  # put application's code here
     notes_articleview = db.session.query(Record).filter_by(cat=cat, subcat=subcat, part='notes')
     return render_template('notes_article.html', notes_articleview=notes_articleview)
+
+@app.route('/other')
+def other():
+    other_page = db.session.query(Record).filter_by(part='other').order_by(Record.cat)
+    return render_template('other.html', other_page=other_page)
+
+@app.route('/other/<string:page>')
+def otherpage(page):  # put application's code here
+    other_page = db.session.query(Record).filter_by(cat=page, part='other').order_by(Record.type_sort)
+    return render_template('other_article.html', other_page=other_page)
 
 @app.route('/blades')
 def blades():  # put application's code here

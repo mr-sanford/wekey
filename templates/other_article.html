@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{other_page[0].header}}
+{% endblock %}
+
+{% block body %}
+<div class="container notes mt-4">
+    <h1>{{other_page[0].header}}</h1>
+    {{other_page[0].article | safe}}
+</div>
+{% endblock %}

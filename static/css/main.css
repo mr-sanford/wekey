@@ -6,14 +6,28 @@ footer {
     clear: both;
 }
 
+.border-top {
+    border-top: 1px solid #7F7F7F !important;
+}
+
 @media (min-width: 992px) {
     .navbarmy .nav-item {
         border-radius: 10px;
         margin-left: 4px;
     }
+
+
 }
 
 @media (max-width: 991px) {
+    .item-other {
+        white-space: normal !important;
+        word-wrap: break-word !important;
+    }
+
+    .form-current {
+        width: 100% !important;
+    }
     .navbar-brand {
         margin-right: 0 !important;
         /*background: none;*/
@@ -137,6 +151,10 @@ body {
 
 .dropdown-menu.show{
     margin-top: 0 !important; /*Убираем отступ, который добавляется к анимации через jquery*/
+}
+
+.form-control, .form-select {
+    border: 1px solid #7F7F7F !important;
 }
 
 .bi {
@@ -351,4 +369,14 @@ body {
     height: 100%;
     border-width: 0;
     outline-width: 0;
+}
+
+.form-current {
+        width: 50%;
+}
+
+.result-current {
+    border: 1px solid #7F7F7F;
+    border-radius: 0.375rem;
+
 }
