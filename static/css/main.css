@@ -1,8 +1,8 @@
 @import "font.css";
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css");
 
-[data-bs-theme=dark] {
-    --bs-body-bg: #181b1e;
+[data-bs-theme=dark] { /*-----------------------------DARK-----------------------------*/
+    --bs-body-bg: #1E2226;
     .card_my {
         background: #212529;
     }
@@ -16,10 +16,12 @@
         box-shadow: 58px 0px 43px -29px rgba(95, 102, 110, 0.6) inset;
     }
 }
-[data-bs-theme=light] {
-    --bs-body-bg: #EEEFF4;
+[data-bs-theme=light] { /*-----------------------------LIGHT-----------------------------*/
+    --bs-body-bg: #F4F4F4;
     .card_my {
         background: #FFFFFF;
+        border: 1px solid #CFCFCF !important;
+        box-shadow: 0px 0px 3px 3px rgba(207, 207, 207, 0.2);
     }
     .card_my:hover {
         box-shadow: 0px -38px 33px -17px rgba(163, 163, 163, 0.6) inset;
@@ -29,6 +31,9 @@
     }
     .card_sig_model:hover {
         box-shadow: 58px 0px 43px -29px rgba(163, 163, 163, 0.6) inset;
+    }
+    .form-select, .form-control {
+        background-color: #FFFFFF;
     }
 }
 
@@ -246,10 +251,6 @@ body {
     font-weight: 500;
 }
 
-.card_my {
-    border: 1px solid #7F7F7F !important;
-}
-
 .card_div_img {
     border-radius: 5px;
     /*background: #FFF;*/
@@ -319,6 +320,17 @@ body {
     padding: 0;
     margin: 0;
     opacity: 0;
+}
+
+.div_card_btn_visible {
+    text-align: center;
+
+}
+
+.card_my_btn_visible  {
+    margin-top: 1em;
+    margin-left: auto !important;
+    margin-right: auto !important;
 }
 
 .accordion_mb {
@@ -420,5 +432,4 @@ body {
 .result-current {
     border: 1px solid #7F7F7F;
     border-radius: 0.375rem;
-
 }
