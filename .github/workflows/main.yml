@@ -12,11 +12,11 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
-          request_pty: true
+#         request_pty: true
           script: |
             cd wekey
             sudo git pull
             sudo systemctl restart wekey
-#            pip install -r requirements.txt
-#            sudo systemctl restart nginx
-#            sudo systemctl restart gunicorn
+#           pip install -r requirements.txt
+#           sudo systemctl restart nginx
+#           sudo systemctl restart gunicorn
