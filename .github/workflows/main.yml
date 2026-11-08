@@ -12,6 +12,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
+          request_pty: true
           script: |
             cd wekey
             sudo git pull
