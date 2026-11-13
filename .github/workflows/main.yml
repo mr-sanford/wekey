@@ -14,9 +14,9 @@ jobs:
           port: ${{ secrets.PORT }}
 #         request_pty: true
           script: |
-            cd wekey
+            cd wekeys-one
             sudo git pull
-            sudo systemctl restart wekey
+            sudo systemctl restart wekeys-one
 #           pip install -r requirements.txt
 #           sudo systemctl restart nginx
 #           sudo systemctl restart gunicorn
